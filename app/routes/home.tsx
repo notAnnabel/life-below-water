@@ -1,19 +1,16 @@
-import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
-import { useEffect } from "react";
+// import './App.css';
+import P5Sketch from './../helpers/lifebelowwater';
 
 
-
-export function meta({}: Route.MetaArgs) {
-  useEffect(() => {
-
-  },[])
-  return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
-  ];
+function App() {
+  return (
+    <div className='container'>
+      <div className='sketch'>
+        <P5Sketch />
+      </div>
+    </div>
+  );
 }
 
-export default function Home() {
-  return <Welcome />;
-}
+export default App;
+
