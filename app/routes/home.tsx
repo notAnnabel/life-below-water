@@ -2,9 +2,11 @@
 import P5Sketch from './../helpers/lifebelowwater';
 
 
+
 function App() {
   return (
     <div className='container'>
+      <button>button text</button>
       <div className='sketch'>
         <P5Sketch />
       </div>
@@ -13,4 +15,8 @@ function App() {
 }
 
 export default App;
+
+
+
+
 
