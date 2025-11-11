@@ -21,7 +21,10 @@ function sketch(p5: any) {
   let g; // green variable in rgb
   let b; // blue variable in rgb
 
-  let img: any // fish image test
+  let livingimg: any // fish image test
+  let deadimg: any // dead fish image 
+  let fish: boolean // true is alive, false is dead
+
   let xpos = 200; // fish x position
   let ypos = p5.windowHeight / 2; // fish y position
   //let bgRed: number = 220
@@ -35,10 +38,13 @@ function sketch(p5: any) {
     if (props.greenWater) {
       greenWater = props.greenWater
     }
+
+    // props for changing the fish to dead
   }
 
   p5.preload = () => {
-    img = p5.loadImage('/assets/fish-png-1.png');
+    livingimg = p5.loadImage('/assets/fish-png-1.png');
+    deadimg = p5.loadImage('/assets/fish-png-1-dead.png')
   }
 
   p5.setup = () => {
@@ -53,7 +59,7 @@ function sketch(p5: any) {
     // p5.background(220, 160, 100);
     calcWave();
     renderWave();
-    p5.image(img, xpos, ypos, 100, 100)
+    p5.image(livingimg, xpos, ypos, 100, 100)
 
   };
 
@@ -96,6 +102,7 @@ function sketch(p5: any) {
       xpos = -100;
       ypos = p5.random(p5.height / 2, p5.width);
     }
+  
 
     //     g = p5.random(180,220);
     //     b = p5.random(200,220)
@@ -115,6 +122,7 @@ const waterconsts = {
     green: 190
   }
 }
+
 
 interface sketchProps {
   pollution: boolean;

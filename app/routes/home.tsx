@@ -51,8 +51,8 @@ function App() {
 
   return (
     <div className='container'>
-      <button style={{top: "2vh"}} onClick={pollute}>💧</button>
-      <button style={{top: "10vh"}} onClick={clean}> clean </button>
+      <button style={{top: "2vh"}} onClick={pollute}>🩸</button>
+      <button style={{top: "10vh"}} onClick={clean}> 💧 </button>
       <div className='sketch'>
         <P5Sketch pollution={pollution} /> {/*pollution inside brackets comes from the state hook */}
       </div>
