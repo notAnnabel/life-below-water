@@ -83,8 +83,7 @@ export async function postClean(){
     }
 
     const result = await response.json();
-    console.log(result.message) 
-    return true
+    return result.pollutionState
   } catch (error: any) {
     if (error && error.message)
       console.error(error.message);
