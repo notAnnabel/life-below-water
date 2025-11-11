@@ -1,4 +1,5 @@
 //import './../app.css';
+import { postPollute } from '~/helpers/backend';
 import P5Sketch from './../helpers/lifebelowwater';
 import { useState } from 'react';
 
@@ -19,6 +20,7 @@ function App() {
     console.log('hellooo');
     setBlueWater(180);
     setgreenWater(180);
+    postPollute()
   };
 
 
