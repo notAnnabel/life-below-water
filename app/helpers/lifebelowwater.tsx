@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
 
+
+interface p5props {
+  greenWater: number,
+  blueWater: number
+}
+
 function sketch(p5: any) {
 
   let xspacing = 12; // Distance between each horizontal location
@@ -17,6 +23,18 @@ function sketch(p5: any) {
   let img: any // fish image test
   let xpos = 200; // fish x position
   let ypos = p5.windowHeight/2; // fish y position
+  //let bgRed: number = 220
+  let blueWater = 220;
+  let greenWater = 200;
+
+  p5.updateWithProps = (props: p5props) => {
+    if (props.blueWater) {
+      blueWater = props.blueWater
+    }
+    if (props.greenWater) {
+      greenWater = props.greenWater
+    }
+  }
 
   p5.preload = () => {
     img = p5.loadImage('/assets/fish-png-1.png');
@@ -31,6 +49,7 @@ function sketch(p5: any) {
 
   p5.draw = () => {
     p5.background(220, 160, 100);
+    // p5.background(220, 160, 100);
     calcWave();
     renderWave();
     p5.image(img, xpos, ypos, 100, 100)
@@ -53,7 +72,8 @@ function sketch(p5: any) {
 
   function renderWave() {
     p5.noStroke();
-    p5.fill(100, 220, 200);
+    //p5.fill(100, 220, 200);
+    p5.fill(100, greenWater, blueWater);
 
     // wave drawing
     let currentHeight = p5.height / 2;
@@ -83,9 +103,10 @@ function sketch(p5: any) {
     //     //}
   }
 }
+  
 
 
-export default function Sketch() {
+export default function Sketch(props: p5props) {
 
   const [P5Wrapper, setP5Wrapper] = useState<any>(null);
 
@@ -98,5 +119,10 @@ export default function Sketch() {
 
   if (!P5Wrapper) return <div>Loading sketch...</div>;
 
-  return <P5Wrapper sketch={sketch} />;
+  // const 
+
+  return <P5Wrapper sketch={sketch} blueWater={props.blueWater} greenWater={props.greenWater}/>;
 }
+
+
+
