@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { getPollution } from "./backend";
 
 
 interface p5props {
@@ -22,7 +23,7 @@ function sketch(p5: any) {
 
   let img: any // fish image test
   let xpos = 200; // fish x position
-  let ypos = p5.windowHeight/2; // fish y position
+  let ypos = p5.windowHeight / 2; // fish y position
   //let bgRed: number = 220
   let blueWater = 220;
   let greenWater = 200;
@@ -84,7 +85,7 @@ function sketch(p5: any) {
         // width, height, somryhinh something
         p5.ellipse(x * xspacing, currentHeight + yvalues[x], 16, 16);
       }
-      currentHeight = currentHeight+20;
+      currentHeight = currentHeight + 20;
     }
 
     // fish drawing
@@ -93,7 +94,7 @@ function sketch(p5: any) {
     }
     else {
       xpos = -100;
-      ypos = p5.random(p5.height/2, p5.width);
+      ypos = p5.random(p5.height / 2, p5.width);
     }
 
     //     g = p5.random(180,220);
@@ -103,10 +104,23 @@ function sketch(p5: any) {
     //     //}
   }
 }
-  
 
+const waterconsts = {
+  polluted: {
+    blue: 200,
+    green: 150
+  },
+  clean: {
+    blue: 220,
+    green: 190
+  }
+}
 
-export default function Sketch(props: p5props) {
+interface sketchProps {
+  pollution: boolean;
+}
+
+export default function Sketch(props: sketchProps) {
 
   const [P5Wrapper, setP5Wrapper] = useState<any>(null);
 
@@ -115,13 +129,17 @@ export default function Sketch(props: p5props) {
     import("@p5-wrapper/react").then((mod) => {
       setP5Wrapper(() => mod.ReactP5Wrapper);
     });
-  }, []);
 
+  }, []); // [] is dependency for rendering
+  
   if (!P5Wrapper) return <div>Loading sketch...</div>;
-
   // const 
 
-  return <P5Wrapper sketch={sketch} blueWater={props.blueWater} greenWater={props.greenWater}/>;
+  return <P5Wrapper
+    sketch={sketch}
+    blueWater={props.pollution ? waterconsts.polluted.blue : waterconsts.clean.blue}
+    greenWater={props.pollution ? waterconsts.polluted.green : waterconsts.clean.green} // ? means if, : is else
+  />;
 }
 
 

@@ -27,7 +27,7 @@ export async function getPollution(){
 
 
 
-
+// STEP TWO: from the result, extract pollutionState instead of message
 
 export async function postPollute(){
 
@@ -48,8 +48,7 @@ export async function postPollute(){
     }
 
     const result = await response.json();
-    console.log(result.message) 
-    return true
+    return result.pollutionState
   } catch (error: any) {
     if (error && error.message)
       console.error(error.message);
