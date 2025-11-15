@@ -29,6 +29,51 @@ function sketch(p5: any) {
   // let fishOne;
   
   let sun = p5.color(255, 204, 0);
+
+
+
+  /*
+  class Fish {
+  
+  let aliveImg;
+  let deadImg;
+  let currentImg;
+  let living = true;
+  let fishSpeed = 2; (gets better when alive worst when dead )
+  let xpos
+  let ypos;
+  let p5;
+
+  constructor (aliveImg, deadImg, currentImg, xpos, ypos, p5){
+  this.aliveImg = aliveImg;
+  this.deadImg = deadImg;
+  this.currentImg = currentImg;
+  this.xpos = xpos;
+  this.ypos = ypos;
+  this.p5 = p5;
+  }
+
+  function kill(){
+  * if pollution prop on
+  * change fish img
+  }
+
+  function resurrect(){}
+  * if pollution prop clean
+  *change fish img
+  }
+
+  function hovering(){
+  *if fish alive:
+  img hover
+  trigger text box depending on the fish
+
+  *if fish dead
+  trigger text box BOOOOO!!!!! YOU KILLED ME YOU JERK >:(
+  }
+
+
+  */
  
 
   let xpos = 200; // fish x position
