@@ -118,7 +118,7 @@ function sketch(p5: any) {
     // p5.background(220, 160, 100);
     p5.fill(sun);
     p5.noStroke();
-    p5.circle(25, 25, 160);
+    p5.circle(25, 25, 250);
     
     //p5.textSize(16);
     //title = p5.text('Life below water', 10, 60);
@@ -196,7 +196,7 @@ function sketch(p5: any) {
 
 const waterconsts = {
   polluted: {
-    blue: 200,
+    blue: 150,
     green: 150,
     fish: false,
   },
