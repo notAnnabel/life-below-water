@@ -40,7 +40,7 @@ function sketch(p5: any) {
   let currentImg;
   let living = true;
   let fishSpeed = 2; (gets better when alive worst when dead )
-  let xpos
+  let xpos;
   let ypos;
   let p5;
 
@@ -54,21 +54,24 @@ function sketch(p5: any) {
   }
 
   function kill(){
-  * if pollution prop on
-  * change fish img
+  * if (props.pollution === polluted){
   }
-
+ 
   function resurrect(){}
-  * if pollution prop clean
-  *change fish img
+  * if (props.pollution === polluted){
+  // draw fish
+     p5.image(livingImg, xpos, ypos, 100, 100);
+  } else (){
+    }
   }
 
   function hovering(){
-  *if fish alive:
-  img hover
-  trigger text box depending on the fish
+  if (mouseOver(livingImg){
+  use mask() abd clip() functions over fish img
+  }
+  // trigger text box depending on the fish
 
-  *if fish dead
+  if (mouseOver(deadImg){
   trigger text box BOOOOO!!!!! YOU KILLED ME YOU JERK >:(
   }
 
