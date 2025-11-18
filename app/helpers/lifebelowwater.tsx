@@ -3,7 +3,7 @@ import { getPollution } from "./backend";
 
 
 interface p5props {
-  fish: boolean;
+  fish: boolean; // true is alive false is dead
   greenWater: number,
   blueWater: number
 }
@@ -35,13 +35,10 @@ function sketch(p5: any) {
   /*
   class Fish {
   
-  let aliveImg;
-  let deadImg;
+  
   let currentImg;
   let living = true;
-  let fishSpeed = 2; (gets better when alive worst when dead )
-  let xpos;
-  let ypos;
+  let fishSpeed = 2; //(gets better when alive worst when dead )
   let p5;
 
   constructor (aliveImg, deadImg, currentImg, xpos, ypos, p5){
@@ -53,8 +50,20 @@ function sketch(p5: any) {
   this.p5 = p5;
   }
 
+  function moving(){
+   if (this.xpos < p5.width) {
+      this.xpos = this.xpos + fishSpeed;
+    }
+    else {
+      this.xpos = -60;
+      this.ypos = p5.random(p5.height / 2, p5.width);
+    }
+  };
+  }
+
   function kill(){
   * if (props.pollution === polluted){
+     this.currentImg = deadImg;
   }
  
   function resurrect(){}
@@ -67,7 +76,7 @@ function sketch(p5: any) {
 
   function hovering(){
   if (mouseOver(livingImg){
-  use mask() abd clip() functions over fish img
+  use mask() and clip() functions over fish img
   }
   // trigger text box depending on the fish
 
@@ -105,7 +114,7 @@ function sketch(p5: any) {
   p5.preload = () => {
     livingimg = p5.loadImage('/assets/fish-png-1.png');
     deadimg = p5.loadImage('/assets/fish-png-1-dead.png');
-    // fishOne = new Fish('/assets/fish-png-1.png', '/assets/fish-png-1-dead.png', 200, py.windowHeight / 2, p5);
+    // fishOne = new Fish(livingImg, deadImg, 200, py.windowHeight / 2, p5);
   }
 
   p5.setup = () => {
