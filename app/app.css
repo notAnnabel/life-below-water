@@ -14,12 +14,24 @@ body {
   }
 }
 
+
+#link {
+  left: 80vw;
+  top: 90vh;
+  background: linear-gradient(to bottom, #f39090, #ecee7e);
+  padding-left: 20px;
+  padding-right: 20px;
+  color: rgb(105, 103, 103);
+};
+
+
+
 button {
   /*z-index: 2;*/
   position: absolute;
   border-radius: 30px;
   border: 50px;
-  color:black;
+  color: black;
   background-color: white;
   border-color: white;
   padding: 10px 10px;
@@ -32,15 +44,16 @@ button:hover {
   background-color: rgb(233, 233, 233);
   border-color: rgb(233, 233, 233);
   color: black;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
 }
 
-card {
+
+.card {
   /*only shows when button is active*/
   width: 0;
   height: 0;
 }
 
-card.button{
+/*card.button{
   /* */
-}
+/*

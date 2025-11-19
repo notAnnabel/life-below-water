@@ -1,4 +1,4 @@
-//import './../app.css';
+import './../app.css';
 import { getPollution, postClean, postPollute } from '~/helpers/backend';
 import P5Sketch from './../helpers/lifebelowwater';
 import { useEffect, useState } from 'react';
@@ -56,6 +56,7 @@ function App() {
       <div className='sketch'>
         <P5Sketch pollution={pollution} /> {/*pollution inside brackets comes from the state hook */}
       </div>
+        <button id='link'> what you can do to help </button>
     </div>
   );
 }

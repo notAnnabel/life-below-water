@@ -26,31 +26,41 @@ function sketch(p5: any) {
   let deadimg: any // dead fish image 
   let fish = true; // true is alive, false is dead
 
+
   // let fishOne;
   
   let sun = p5.color(255, 204, 0);
+  
+  function greenify(){
+    p5.fill("green")
+  };
 
-
-
-  /*
-  class Fish {
+  //let currentImg;
+  //let living = true;
+  //let fishSpeed = 2; //(gets better when alive worst when dead )
+  //let p5;
+  
+  /*class Fish {
+  aliveImg: any;
+  deadImg: any;
+  currentImg: any;
+  xpos: any;
+  ypos: any;
+  //p5: any;
   
   
-  let currentImg;
-  let living = true;
-  let fishSpeed = 2; //(gets better when alive worst when dead )
-  let p5;
 
-  constructor (aliveImg, deadImg, currentImg, xpos, ypos, p5){
+  constructor (aliveImg: any, deadImg: any, currentImg: any, xpos: any, ypos: any){
   this.aliveImg = aliveImg;
   this.deadImg = deadImg;
   this.currentImg = currentImg;
   this.xpos = xpos;
   this.ypos = ypos;
-  this.p5 = p5;
+  //this.p5 = p5;
+  let fishSpeed = 2;
   }
 
-  function moving(){
+  function moving(this: any, fishSpeed: any){
    if (this.xpos < p5.width) {
       this.xpos = this.xpos + fishSpeed;
     }
@@ -61,7 +71,7 @@ function sketch(p5: any) {
   };
   }
 
-  function kill(){
+  /*function kill(){
   * if (props.pollution === polluted){
      this.currentImg = deadImg;
   }
@@ -126,15 +136,34 @@ function sketch(p5: any) {
   };
   
   p5.draw = () => {
-    p5.background("#99D9EA");
+    p5.background("#8ee3faff");
     // p5.background(220, 160, 100);
     p5.fill(sun);
     p5.noStroke();
     p5.circle(25, 25, 250);
     
-    //p5.textSize(16);
-    //title = p5.text('Life below water', 10, 60);
-    //p5.fill(text)
+    p5.textSize(100);
+    p5.fill(205, 255, 255, 120);
+    p5.text('Life below water', p5.windowWidth/3, p5.windowHeight/10+20 );
+    p5.fill(185,255, 255, 120);
+    p5.text('Life below water', p5.windowWidth/3, p5.windowHeight/10+60 );
+    p5.fill(100,185, 255, 80);
+    p5.text('Life below water', p5.windowWidth/3, p5.windowHeight/10+100 );
+    p5.fill(100,145, 255, 40);
+    p5.text('Life below water', p5.windowWidth/3, p5.windowHeight/10+140 );
+    p5.fill(80,125, 255, 40);
+    p5.text('Life below water', p5.windowWidth/3, p5.windowHeight/10+180 );
+    
+    p5.fill(255, 255, 255, 180);
+    p5.text('Life below water', p5.windowWidth/3, p5.windowHeight/10-10 ); // rendered last for better appearance
+
+
+    p5.textSize(30);
+    p5.fill(255, 255, 255, 250);
+    p5.text('click for consequences', p5.windowWidth/3-590, p5.windowHeight/10-55 );
+
+    let healingText = p5.text('click for healing', p5.windowWidth/3-590, p5.windowHeight/10+45 );
+    //p5.healingText.mouseOver(greenify) why wont you work
     
     
     calcWave();
