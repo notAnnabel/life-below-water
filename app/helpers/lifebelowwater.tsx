@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, type JSX } from "react";
 import { getPollution } from "./backend";
 
 
@@ -32,7 +32,7 @@ function sketch(p5: any) {
   let sun = p5.color(255, 204, 0);
   
   function greenify(){
-    p5.fill("green")
+    p5.tint("green")
   };
 
   //let currentImg;
@@ -40,50 +40,64 @@ function sketch(p5: any) {
   //let fishSpeed = 2; //(gets better when alive worst when dead )
   //let p5;
   
-  /*class Fish {
+  class Fish {
   aliveImg: any;
   deadImg: any;
   currentImg: any;
   xpos: any;
   ypos: any;
-  //p5: any;
-  
+  p5: any;
+  fishSpeed: any;
   
 
-  constructor (aliveImg: any, deadImg: any, currentImg: any, xpos: any, ypos: any){
+  constructor (aliveImg: any, deadImg: any, currentImg: any, xpos: number, ypos: number, p5: any){
   this.aliveImg = aliveImg;
   this.deadImg = deadImg;
   this.currentImg = currentImg;
   this.xpos = xpos;
   this.ypos = ypos;
-  //this.p5 = p5;
-  let fishSpeed = 2;
+  this.p5 = p5;
+  this.fishSpeed = 2;
   }
 
-  function moving(this: any, fishSpeed: any){
-   if (this.xpos < p5.width) {
-      this.xpos = this.xpos + fishSpeed;
+   update() {
+        this.moving();
+        this.showFish();
+  };
+
+   moving(){
+   if (this.xpos < p5.windowWidth) {
+      this.xpos = this.xpos + this.fishSpeed;
+      console.log(this.xpos); // fish is moving theoretically
     }
     else {
       this.xpos = -60;
-      this.ypos = p5.random(p5.height / 2, p5.width);
+      this.ypos = this.p5.random(this.p5.height / 2);
     }
   };
-  }
+  showFish(){
+    this.p5.image(this.currentImg, this.xpos, this.ypos, 100, 100);
+    //if (this.xpos < p5.windowWidth) {
+      //this.xpos = this.xpos + 2;  
+    }
+  };
+  
 
-  /*function kill(){
-  * if (props.pollution === polluted){
-     this.currentImg = deadImg;
+  //}; uncommented out for testing
+
+  /*kill(){
+   if (props.pollution === polluted){
+     this.currentImg = this.deadImg;
   }
  
   function resurrect(){}
-  * if (props.pollution === polluted){
+    if (props.pollution === clean){
   // draw fish
-     p5.image(livingImg, xpos, ypos, 100, 100);
+     p5.image(this.livingImg, this.xpos, this.ypos, 100, 100);
   } else (){
     }
-  }
-
+  }*/
+  /*
   function hovering(){
   if (mouseOver(livingImg){
   use mask() and clip() functions over fish img
@@ -121,11 +135,14 @@ function sketch(p5: any) {
     }
   }
 
+  let fishOne: any , fishTwo: any, fishThree: any;
+
   p5.preload = () => {
     livingimg = p5.loadImage('/assets/fish-png-1.png');
     deadimg = p5.loadImage('/assets/fish-png-1-dead.png');
-    // fishOne = new Fish(livingImg, deadImg, 200, py.windowHeight / 2, p5);
   }
+
+  
 
   p5.setup = () => {
     p5.createCanvas(p5.windowWidth, p5.windowHeight);
@@ -133,6 +150,9 @@ function sketch(p5: any) {
     dx = (p5.TWO_PI / period) * xspacing;
     yvalues = new Array(p5.floor(w / xspacing));
 
+    fishOne = new Fish('/assets/fish-png-1.png', '/assets/fish-png-1-dead.png', '/assets/fish-png-1.png',  200, p5.windowHeight / 2, p5);
+    fishTwo = new Fish('/assets/fish-png-1.png', '/assets/fish-png-1-dead.png', '/assets/fish-png-1.png',  200, p5.windowHeight / 3, p5);
+    fishThree = new Fish('/assets/fish-png-1.png', '/assets/fish-png-1-dead.png', '/assets/fish-png-1.png',  200, p5.windowHeight / 2-20, p5);
   };
   
   p5.draw = () => {
@@ -155,15 +175,9 @@ function sketch(p5: any) {
     p5.text('Life below water', p5.windowWidth/3, p5.windowHeight/10+180 );
     
     p5.fill(255, 255, 255, 180);
+    
     p5.text('Life below water', p5.windowWidth/3, p5.windowHeight/10-10 ); // rendered last for better appearance
-
-
-    p5.textSize(30);
-    p5.fill(255, 255, 255, 250);
-    p5.text('click for consequences', p5.windowWidth/3-590, p5.windowHeight/10-55 );
-
-    let healingText = p5.text('click for healing', p5.windowWidth/3-590, p5.windowHeight/10+45 );
-    //p5.healingText.mouseOver(greenify) why wont you work
+    
     
     
     calcWave();
@@ -177,55 +191,65 @@ function sketch(p5: any) {
     }
     
     // fish drawing
-    if (xpos < p5.width) {
+    /*if (xpos < p5.width) {
       xpos = xpos + 2;
-    }
-    else {
-      xpos = -100;
-      ypos = p5.random(p5.height / 2, p5.width);
-    }
-  };
-
-  p5.windowResized = () => {
-  p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
-  w = p5.width + 16;
-    dx = (p5.TWO_PI / period) * xspacing;
-    yvalues = new Array(p5.floor(w / xspacing));
-}
-
-  function calcWave() {
-    // Increment theta (try different values for
-    // 'angular velocity' here)
-    theta += 0.02;
-
-    // For every x value, calculate a y value with sine function
-    let x = theta;
-    for (let i = 0; i < yvalues.length; i++) {
-      yvalues[i] = p5.sin(x) * amplitude;
-      x += dx;
-    }
-
-  }
-
-  function renderWave() {
-    p5.noStroke();
-    //p5.fill(100, 220, 200);
-    p5.fill(100, greenWater, blueWater);
-
-    // wave drawing
-    let currentHeight = p5.height / 2;
-    while (currentHeight - 50 < p5.height) {
-      for (let x = 0; x < yvalues.length; x++) {
-        // A simple way to draw the wave with an ellipse at each location
-        //     //for (let wavespacing=5; wavespacing<60; wavespacing++){
-        // width, height, somryhinh something
-        p5.ellipse(x * xspacing, currentHeight + yvalues[x], 16, 16);
       }
-      currentHeight = currentHeight + 20;
+      else {
+        xpos = -100;
+      ypos = p5.random(p5.height / 2, p5.width);
+      }*/
+     
+    };
+    
+    p5.windowResized = () => {
+      p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
+      w = p5.width + 16;
+      dx = (p5.TWO_PI / period) * xspacing;
+      yvalues = new Array(p5.floor(w / xspacing));
     }
-
-  
-  
+    
+    function calcWave() {
+      // Increment theta (try different values for
+      // 'angular velocity' here)
+      theta += 0.02;
+      
+      // For every x value, calculate a y value with sine function
+      let x = theta;
+      for (let i = 0; i < yvalues.length; i++) {
+        yvalues[i] = p5.sin(x) * amplitude;
+        x += dx;
+      }
+      
+    }
+    
+    function renderWave() {
+      p5.noStroke();
+      //p5.fill(100, 220, 200);
+      p5.fill(100, greenWater, blueWater);
+      
+      // wave drawing
+      let currentHeight = p5.height / 2;
+      while (currentHeight - 50 < p5.height) {
+        for (let x = 0; x < yvalues.length; x++) {
+          // A simple way to draw the wave with an ellipse at each location
+          //     //for (let wavespacing=5; wavespacing<60; wavespacing++){
+            // width, height, somryhinh something
+            p5.ellipse(x * xspacing, currentHeight + yvalues[x], 16, 16);
+          }
+          currentHeight = currentHeight + 20;
+        }
+        
+        
+        
+        //fishOne.showFish(); //show fish is affecting the waves?????
+        //fishOne.moving();
+        //fishTwo.showFish();
+        //fishTwo.moving();
+        //fishThree.showFish();
+        //fishThree.moving();
+        //fishOne.update();
+        //fishTwo.update();
+        //fishThree.update();
 
     //     g = p5.random(180,220);
     //     b = p5.random(200,220)
@@ -253,8 +277,8 @@ interface sketchProps {
   pollution: boolean;
 }
 
-export default function Sketch(props: sketchProps) {
 
+export default function Sketch(props: sketchProps): JSX.Element {
   const [P5Wrapper, setP5Wrapper] = useState<any>(null);
 
   useEffect(() => {
@@ -275,6 +299,3 @@ export default function Sketch(props: sketchProps) {
     fish={props.pollution ? waterconsts.polluted.fish : waterconsts.clean.fish}
   />;
 }
-
-
-

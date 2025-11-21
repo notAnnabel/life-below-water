@@ -48,11 +48,15 @@ function App() {
     fetchData();
   }
 
+ // https://www.slingacademy.com/article/typescript-handle-html-button-onclick-event/
+
 
   return (
     <div className='container'>
-      <button style={{top: "2vh"}} onClick={pollute}>🩸</button>
+      <button style={{top: "2vh"}} onClick={pollute}>☢️</button>
       <button style={{top: "10vh"}} onClick={clean}> 💧 </button>
+      <p className='pollutionText' id='pollutedText'> click to see the consequences</p>
+      <p className='pollutionText' id='cleanText' style={{top: "12vh"}}> click to help </p>
       <div className='sketch'>
         <P5Sketch pollution={pollution} /> {/*pollution inside brackets comes from the state hook */}
       </div>

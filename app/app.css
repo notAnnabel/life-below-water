@@ -22,7 +22,25 @@ body {
   padding-left: 20px;
   padding-right: 20px;
   color: rgb(105, 103, 103);
+  font-size: 25px;
 };
+
+#cleanText:hover {
+  color: rgb(125, 185, 125);
+}
+
+#pollutedText:hover {
+  color: rgb(230, 130, 130);
+}
+
+.pollutionText {
+  font-size: 30px;
+  color: rgb(255, 241, 241);
+  position: absolute;
+  left: 10vw;
+  top: 4vh;
+}
+
 
 
 
