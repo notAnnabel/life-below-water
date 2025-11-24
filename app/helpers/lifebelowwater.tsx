@@ -1,14 +1,17 @@
 import { useState, useEffect, type JSX } from "react";
 import { getPollution } from "./backend";
+import Fish from "./Fish";
 
 
 interface p5props {
-  fish: boolean; // true is alive false is dead
+  polluted: boolean; // true is clean (positive) false is polluted
   greenWater: number,
   blueWater: number
 }
 
 function sketch(p5: any) {
+
+  //let fish = new Fish("/assets/fish-png-1.png", "/assets/fish-png-1-dead.png", 200, p5.windowHeight / 2, p5);
   
   let xspacing = 12; // Distance between each horizontal location
   let w; // Width of entire wave
@@ -22,66 +25,28 @@ function sketch(p5: any) {
   let g; // green variable in rgb
   let b; // blue variable in rgb
   
-  let livingimg: any // fish image test
-  let deadimg: any // dead fish image 
-  let fish = true; // true is alive, false is dead
+  //let livingimg: any // fish image test
+  //let deadimg: any // dead fish image 
+
 
 
   // let fishOne;
   
   let sun = p5.color(255, 204, 0);
   
-  function greenify(){
-    p5.tint("green")
-  };
+  //function greenify(){
+  //  p5.tint("green")
+  //};
 
-  //let currentImg;
-  //let living = true;
-  //let fishSpeed = 2; //(gets better when alive worst when dead )
-  //let p5;
   
-  class Fish {
-  aliveImg: any;
-  deadImg: any;
-  currentImg: any;
-  xpos: any;
-  ypos: any;
-  p5: any;
-  fishSpeed: any;
-  
-
-  constructor (aliveImg: any, deadImg: any, currentImg: any, xpos: number, ypos: number, p5: any){
-  this.aliveImg = aliveImg;
-  this.deadImg = deadImg;
-  this.currentImg = currentImg;
-  this.xpos = xpos;
-  this.ypos = ypos;
-  this.p5 = p5;
-  this.fishSpeed = 2;
-  }
-
-   update() {
-        this.moving();
-        this.showFish();
-  };
-
-   moving(){
-   if (this.xpos < p5.windowWidth) {
-      this.xpos = this.xpos + this.fishSpeed;
-      console.log(this.xpos); // fish is moving theoretically
-    }
-    else {
-      this.xpos = -60;
-      this.ypos = this.p5.random(this.p5.height / 2);
-    }
-  };
+/*
   showFish(){
     this.p5.image(this.currentImg, this.xpos, this.ypos, 100, 100);
     //if (this.xpos < p5.windowWidth) {
       //this.xpos = this.xpos + 2;  
     }
   };
-  
+  */
 
   //}; uncommented out for testing
 
@@ -130,17 +95,22 @@ function sketch(p5: any) {
     }
 
     // props for changing the fish to dead
-    if (props.fish != undefined) {
-      fish = props.fish
+    if (props.polluted != undefined) {
+      if (props.polluted){
+        Fish.revive();
+      } else {
+        Fish.kill();
+      }
     }
   }
+
+
 
   let fishOne: any , fishTwo: any, fishThree: any;
 
   p5.preload = () => {
-    livingimg = p5.loadImage('/assets/fish-png-1.png');
-    deadimg = p5.loadImage('/assets/fish-png-1-dead.png');
-  }
+    Fish.preload(); // call the preload function from fish class
+  };
 
   
 
@@ -182,13 +152,13 @@ function sketch(p5: any) {
     
     calcWave();
     renderWave();
-    if (fish===true){
+    /*if (===true){
       p5.image(livingimg, xpos, ypos, 100, 100);
     }
     if (fish===false){
       p5.image(deadimg, xpos, ypos, 100, 100);
       console.log("dead");
-    }
+    }*/
     
     // fish drawing
     /*if (xpos < p5.width) {
@@ -250,7 +220,6 @@ function sketch(p5: any) {
         //fishOne.update();
         //fishTwo.update();
         //fishThree.update();
-
     //     g = p5.random(180,220);
     //     b = p5.random(200,220)
     //     p5.fill(100,g,b)
@@ -263,12 +232,12 @@ const waterconsts = {
   polluted: {
     blue: 150,
     green: 150,
-    fish: false,
+    polluted: false,
   },
   clean: {
     blue: 220,
     green: 190,
-    fish: true,
+    polluted: true,
   }
 }
 
@@ -296,6 +265,6 @@ export default function Sketch(props: sketchProps): JSX.Element {
     sketch={sketch}
     blueWater={props.pollution ? waterconsts.polluted.blue : waterconsts.clean.blue}
     greenWater={props.pollution ? waterconsts.polluted.green : waterconsts.clean.green} // ? means if, : means else
-    fish={props.pollution ? waterconsts.polluted.fish : waterconsts.clean.fish}
+    polluted={props.pollution ? waterconsts.polluted.polluted : waterconsts.clean.polluted}
   />;
 }

@@ -1,77 +1,80 @@
 // the fish live here mwahahah
 
- //let currentImg;
-  //let living = true;
-  //let fishSpeed = 2; //(gets better when alive worst when dead )
-  //let p5;
-  
-  class Fish {
+export default class Fish {
+
   aliveImg: any;
   deadImg: any;
   currentImg: any;
-  xpos: any;
-  ypos: any;
+  xpos: number;
+  ypos: number;
   p5: any;
   fishSpeed: any;
-  
+  alive = true;
 
-  constructor (aliveImg: any, deadImg: any, currentImg: any, xpos: number, ypos: number, p5: any){
-  this.aliveImg = aliveImg;
-  this.deadImg = deadImg;
-  this.currentImg = currentImg;
-  this.xpos = xpos;
-  this.ypos = ypos;
-  this.p5 = p5;
-  this.fishSpeed = 2;
-  }
 
-   update() {
-        this.moving();
-        this.showFish();
+  constructor(aliveImg: any, deadImg: any, currentImg: any, xpos: number, ypos: number, p5: any) {
+    this.aliveImg = aliveImg;
+    this.deadImg = deadImg;
+    this.currentImg = currentImg;
+    this.xpos = xpos;
+    this.ypos = ypos;
+    this.p5 = p5;
+    this.fishSpeed = 2;
   };
 
-   moving(){
-   if (this.xpos < p5.windowWidth) {
+  preload() {
+    this.aliveImg = this.p5.loadImage(this.aliveImg)
+    this.deadImg = this.p5.loadImage(this.deadImg)
+    this.currentImg = this.p5.loadImage(this.currentImg) // preloads the images
+  };
+
+  moving() {
+    if (this.xpos < this.p5.windowWidth) {
       this.xpos = this.xpos + this.fishSpeed;
       console.log(this.xpos); // fish is moving theoretically
     }
     else {
       this.xpos = -60;
-      this.ypos = this.p5.random(this.p5.height / 2);
+      this.ypos = this.p5.random(this.p5.height / 2, this.p5.width);
     }
-  };
-  showFish(){
     this.p5.image(this.currentImg, this.xpos, this.ypos, 100, 100);
-    //if (this.xpos < p5.windowWidth) {
-      //this.xpos = this.xpos + 2;  
-    }
   };
-  
+  kill() {
+    this.alive = false;
+    this.currentImg = this.deadImg; // change image to dead fish
+  };
+  revive() {
+    this.alive = true;
+    this.currentImg = this.aliveImg; // change image to alive fish
+  };
+};
 
-  //}; uncommented out for testing
 
-  /*kill(){
-   if (props.pollution === polluted){
-     this.currentImg = this.deadImg;
-  }
+//}; uncommented out for testing
+
+/*kill(){
+ if (props.pollution === polluted){
+   this.currentImg = this.deadImg;
+}
  
-  function resurrect(){}
-    if (props.pollution === clean){
-  // draw fish
-     p5.image(this.livingImg, this.xpos, this.ypos, 100, 100);
-  } else (){
-    }
-  }*/
-  /*
-  function hovering(){
-  if (mouseOver(livingImg){
-  use mask() and clip() functions over fish img
+function resurrect(){}
+  if (props.pollution === clean){
+// draw fish
+   p5.image(this.livingImg, this.xpos, this.ypos, 100, 100);
+} else (){
   }
-  // trigger text box depending on the fish
+}*/
+/*
+function hovering(){
+if (mouseOver(livingImg){
+use mask() and clip() functions over fish img
+}
+// trigger text box depending on the fish
 
-  if (mouseOver(deadImg){
-  trigger text box BOOOOO!!!!! YOU KILLED ME YOU JERK >:(
-  }
+if (mouseOver(deadImg){
+trigger text box BOOOOO!!!!! YOU KILLED ME YOU JERK >:(
+}
 
 
-  */
+*/
+
