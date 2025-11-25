@@ -29,7 +29,7 @@ export default class Wave {
     this.theta = 0.0; // Start angle at 0
     this.amplitude = 30.0; // Height of wave
     this.period = 500.0; // How many pixels before the wave repeats
-    this.dx; // Value for incrementing x
+    // this.dx; // Value for incrementing x
     let yvalues: Array<number>; // Using an array to store height values for the wave
 
     //this.currentHeight = p5.height/2;
@@ -40,17 +40,17 @@ export default class Wave {
   }
 
   setup() {
-    this.w = this.p5.WindowWidth + 16;
-    this.dx = (this.p5.TWO_PI / this.p5.period) * this.xspacing;
+    this.w = this.p5.windowWidth + 16;
+    this.dx = (this.p5.TWO_PI / this.period) * this.xspacing;
     this.yvalues = new Array(this.p5.floor(this.w / this.xspacing));
   };
 
   renderWave() {
-    this.p5.noStroke()
     this.p5.fill(100, this.greenWater, this.blueWater)
 
 
     let currentHeight = this.p5.height / 2;
+
     while (currentHeight - 50 < this.p5.height) {
       for (let x = 0; x < this.yvalues.length; x++) {
         // A simple way to draw the wave with an ellipse at each location
@@ -69,8 +69,8 @@ export default class Wave {
     }
   };
 
-
-
-
-
+  draw() {
+    this.calcWave();
+    this.renderWave();
+  }
 }

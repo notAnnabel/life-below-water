@@ -10,6 +10,9 @@ export default class Fish {
   p5: any;
   fishSpeed: any;
   alive = true;
+  imageSize = 100;
+  lowerLimit = 0;
+  upperLimit = 0;
 
 
   constructor(aliveImg: any, deadImg: any, currentImg: any, xpos: number, ypos: number, fishSpeed: number, p5: any) {
@@ -28,16 +31,20 @@ export default class Fish {
     this.currentImg = this.p5.loadImage(this.currentImg) // preloads the images
   };
 
+  setup(){
+    this.lowerLimit = this.p5.height * 0.5;
+    this.upperLimit = this.p5.height * 0.8
+  }
+
   moving() {
     if (this.xpos < this.p5.windowWidth) {
       this.xpos = this.xpos + this.fishSpeed;
-      console.log(this.xpos); // fish is moving theoretically
     }
     else {
       this.xpos = -60;
-      this.ypos = this.p5.random(this.p5.height * 0.5, this.p5.height * 0.8);
+      this.ypos = this.p5.random(this.lowerLimit, this.upperLimit);
     }
-    this.p5.image(this.currentImg, this.xpos, this.ypos, 100, 100);
+    this.p5.image(this.currentImg, this.xpos, this.ypos, this.imageSize, this.imageSize);
   };
   kill() {
     this.alive = false;
