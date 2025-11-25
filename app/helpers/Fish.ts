@@ -12,14 +12,14 @@ export default class Fish {
   alive = true;
 
 
-  constructor(aliveImg: any, deadImg: any, currentImg: any, xpos: number, ypos: number, p5: any) {
+  constructor(aliveImg: any, deadImg: any, currentImg: any, xpos: number, ypos: number, fishSpeed: number, p5: any) {
     this.aliveImg = aliveImg;
     this.deadImg = deadImg;
     this.currentImg = currentImg;
     this.xpos = xpos;
     this.ypos = ypos;
     this.p5 = p5;
-    this.fishSpeed = 2;
+    this.fishSpeed = fishSpeed;
   };
 
   preload() {
@@ -35,7 +35,7 @@ export default class Fish {
     }
     else {
       this.xpos = -60;
-      this.ypos = this.p5.random(this.p5.height / 2, this.p5.width);
+      this.ypos = this.p5.random(this.p5.height * 0.5, this.p5.height * 0.8);
     }
     this.p5.image(this.currentImg, this.xpos, this.ypos, 100, 100);
   };
@@ -52,18 +52,6 @@ export default class Fish {
 
 //}; uncommented out for testing
 
-/*kill(){
- if (props.pollution === polluted){
-   this.currentImg = this.deadImg;
-}
- 
-function resurrect(){}
-  if (props.pollution === clean){
-// draw fish
-   p5.image(this.livingImg, this.xpos, this.ypos, 100, 100);
-} else (){
-  }
-}*/
 /*
 function hovering(){
 if (mouseOver(livingImg){
@@ -74,7 +62,6 @@ use mask() and clip() functions over fish img
 if (mouseOver(deadImg){
 trigger text box BOOOOO!!!!! YOU KILLED ME YOU JERK >:(
 }
-
 
 */
 

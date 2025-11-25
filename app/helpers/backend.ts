@@ -21,14 +21,6 @@ export async function getPollution(){
 
 
 
-
-
-
-
-
-
-// STEP TWO: from the result, extract pollutionState instead of message
-
 export async function postPollute(){
 
 
