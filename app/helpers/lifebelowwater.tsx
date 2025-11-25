@@ -10,7 +10,11 @@ interface p5props {
 }
 
 function sketch(p5: any) {
-
+  let fishOne = new Fish('/assets/fish-png-1.png', '/assets/fish-png-1-dead.png', '/assets/fish-png-1.png',  200, p5.windowHeight / 2, p5);
+  let fishTwo = new Fish('/assets/fish-png-1.png', '/assets/fish-png-1-dead.png', '/assets/fish-png-1.png',  200, p5.windowHeight / 3, p5);
+  let fishThree = new Fish('/assets/fish-png-1.png', '/assets/fish-png-1-dead.png', '/assets/fish-png-1.png',  200, p5.windowHeight / 2-20, p5);
+  let fishFour = new Fish('/assets/shark-png-1.png', '/assets/shark-png-1-dead.webp', '/assets/shark-png-1.png',  200, p5.windowHeight / 2-20, p5);
+  
   //let fish = new Fish("/assets/fish-png-1.png", "/assets/fish-png-1-dead.png", 200, p5.windowHeight / 2, p5);
   
   let xspacing = 12; // Distance between each horizontal location
@@ -34,47 +38,7 @@ function sketch(p5: any) {
   
   let sun = p5.color(255, 204, 0);
   
-  //function greenify(){
-  //  p5.tint("green")
-  //};
 
-  
-/*
-  showFish(){
-    this.p5.image(this.currentImg, this.xpos, this.ypos, 100, 100);
-    //if (this.xpos < p5.windowWidth) {
-      //this.xpos = this.xpos + 2;  
-    }
-  };
-  */
-
-  //}; uncommented out for testing
-
-  /*kill(){
-   if (props.pollution === polluted){
-     this.currentImg = this.deadImg;
-  }
- 
-  function resurrect(){}
-    if (props.pollution === clean){
-  // draw fish
-     p5.image(this.livingImg, this.xpos, this.ypos, 100, 100);
-  } else (){
-    }
-  }*/
-  /*
-  function hovering(){
-  if (mouseOver(livingImg){
-  use mask() and clip() functions over fish img
-  }
-  // trigger text box depending on the fish
-
-  if (mouseOver(deadImg){
-  trigger text box BOOOOO!!!!! YOU KILLED ME YOU JERK >:(
-  }
-
-
-  */
  
 
   let xpos = 200; // fish x position
@@ -97,32 +61,38 @@ function sketch(p5: any) {
     // props for changing the fish to dead
     if (props.polluted != undefined) {
       if (props.polluted){
-        Fish.revive();
+        fishOne.revive();
+        fishTwo.revive();
+        fishThree.revive();
+        fishFour.revive()
+
       } else {
-        Fish.kill();
+        fishOne.kill();
+        fishTwo.kill();
+        fishThree.kill();
+        fishFour.revive
       }
     }
   }
 
-
-
-  let fishOne: any , fishTwo: any, fishThree: any;
-
-  p5.preload = () => {
-    Fish.preload(); // call the preload function from fish class
-  };
-
   
-
+  
+  
+  p5.preload = () => {
+    fishOne.preload(); // call the preload function from fish class
+    fishTwo.preload(); // call the preload function from fish class
+    fishThree.preload(); // call the preload function from fish class
+    fishFour.preload();
+  };
+  
+  
+  
   p5.setup = () => {
     p5.createCanvas(p5.windowWidth, p5.windowHeight);
     w = p5.width + 16;
     dx = (p5.TWO_PI / period) * xspacing;
     yvalues = new Array(p5.floor(w / xspacing));
-
-    fishOne = new Fish('/assets/fish-png-1.png', '/assets/fish-png-1-dead.png', '/assets/fish-png-1.png',  200, p5.windowHeight / 2, p5);
-    fishTwo = new Fish('/assets/fish-png-1.png', '/assets/fish-png-1-dead.png', '/assets/fish-png-1.png',  200, p5.windowHeight / 3, p5);
-    fishThree = new Fish('/assets/fish-png-1.png', '/assets/fish-png-1-dead.png', '/assets/fish-png-1.png',  200, p5.windowHeight / 2-20, p5);
+    
   };
   
   p5.draw = () => {
@@ -147,28 +117,16 @@ function sketch(p5: any) {
     p5.fill(255, 255, 255, 180);
     
     p5.text('Life below water', p5.windowWidth/3, p5.windowHeight/10-10 ); // rendered last for better appearance
-    
-    
+
     
     calcWave();
     renderWave();
-    /*if (===true){
-      p5.image(livingimg, xpos, ypos, 100, 100);
-    }
-    if (fish===false){
-      p5.image(deadimg, xpos, ypos, 100, 100);
-      console.log("dead");
-    }*/
+    fishOne.moving();
+    fishTwo.moving();
+    fishThree.moving();
+    fishFour.moving();
     
-    // fish drawing
-    /*if (xpos < p5.width) {
-      xpos = xpos + 2;
-      }
-      else {
-        xpos = -100;
-      ypos = p5.random(p5.height / 2, p5.width);
-      }*/
-     
+    
     };
     
     p5.windowResized = () => {
@@ -210,16 +168,6 @@ function sketch(p5: any) {
         }
         
         
-        
-        //fishOne.showFish(); //show fish is affecting the waves?????
-        //fishOne.moving();
-        //fishTwo.showFish();
-        //fishTwo.moving();
-        //fishThree.showFish();
-        //fishThree.moving();
-        //fishOne.update();
-        //fishTwo.update();
-        //fishThree.update();
     //     g = p5.random(180,220);
     //     b = p5.random(200,220)
     //     p5.fill(100,g,b)
