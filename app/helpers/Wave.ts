@@ -1,60 +1,73 @@
 // omg wave me goodbye my lovely waves :3
 
 
-export default class Wave{
-    green: any;
-    blue: any;
-    red: any;
+export default class Wave {
+  greenWater: any;
+  blueWater: any;
+  red: any;
 
-    xspacing: number;
-    width: number;
-    theta: number;
-    amplitude: number;
-    dx: number;
-    yvalues: Array<number>;
+  p5: any
 
-    wavenum: number; // number of waves
+  xspacing: number;
+  w: number = 0;
+  theta: number;
+  amplitude: number;
+  dx: number = 0;
+  yvalues: Array<number> = [];
+  period: number;
 
 
-    constructor (){
-      this.green = green;
-      this.blue = blue;
-    
+  wavenum: number; // number of waves
 
-      this.xspacing = 12; // Distance between each horizontal location
-      this.width = width; // Width of entire wave
-      this.theta = 0.0; // Start angle at 0
-      this.amplitude = 30.0; // Height of wave
-      this.period = 500.0; // How many pixels before the wave repeats
-      this.dx; // Value for incrementing x
-      let yvalues: Array<number>; // Using an array to store height values for the wave
 
-      this.wavenum=
+  constructor(green: any, blue: any, p5: any) {
+    this.greenWater = green;
+    this.blueWater = blue;
+
+
+    this.xspacing = 12; // Distance between each horizontal location
+    this.theta = 0.0; // Start angle at 0
+    this.amplitude = 30.0; // Height of wave
+    this.period = 500.0; // How many pixels before the wave repeats
+    this.dx; // Value for incrementing x
+    let yvalues: Array<number>; // Using an array to store height values for the wave
+
+    //this.currentHeight = p5.height/2;
+
+    this.p5 = p5;
+
+    this.wavenum = 0;
+  }
+
+  setup() {
+    this.w = this.p5.WindowWidth + 16;
+    this.dx = (this.p5.TWO_PI / this.p5.period) * this.xspacing;
+    this.yvalues = new Array(this.p5.floor(this.w / this.xspacing));
+  };
+
+  renderWave() {
+    this.p5.noStroke()
+    this.p5.fill(100, this.greenWater, this.blueWater)
+
+
+    let currentHeight = this.p5.height / 2;
+    while (currentHeight - 50 < this.p5.height) {
+      for (let x = 0; x < this.yvalues.length; x++) {
+        // A simple way to draw the wave with an ellipse at each location
+        this.p5.ellipse(x * this.xspacing, currentHeight + this.yvalues[x], 16, 16);
+      }
+      currentHeight = currentHeight + 20;
     }
+  };
 
-    setup(){
-      this.width = p5.WindowWidth +16;
-      dx = (p5.TWO_PI / period )* xpspacing;
-      yvalues = new Array(p5.floor(w / xspacing));
-    };
-
-    renderWave() {
-    p5.noStroke()
-    p5.fill(100, this.greenWater, blueWater)
-
-
-     this.currentHeight = this.p5.height / 2;
-      while (currentHeight - 50 < p5.height) {
-        for (let x = 0; x < yvalues.length; x++) {
-          // A simple way to draw the wave with an ellipse at each location
-            p5.ellipse(x * xspacing, currentHeight + yvalues[x], 16, 16);
-          }
-          currentHeight = currentHeight + 20;
+  calcWave() {
+    this.theta += 0.02 // is this so that value doesnt reset when reloaded
+    let x = this.theta;
+    for (let i = 0; i < this.yvalues.length; i++) {
+      this.yvalues[i] = this.p5.sin(x) * this.amplitude;
+      x += this.dx;
     }
-
-    calcWave(){
-    theta += 0.02
-    };
+  };
 
 
 
