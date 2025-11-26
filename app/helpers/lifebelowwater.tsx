@@ -3,7 +3,7 @@ import { getPollution } from "./backend";
 import Fish from "./Fish";
 import Wave from "./Wave";
 import Shark from "./Shark";
-import Bird from "./bird";
+import Bird from "./Bird";
 
 interface p5props {
   polluted: boolean; // true is clean (positive) false is polluted
