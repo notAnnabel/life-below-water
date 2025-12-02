@@ -19,12 +19,12 @@ function sketch(p5: any) {
   let greenWater = 200;
   let wave = new Wave(blueWater, greenWater, p5);
 
-  let fishOne = new Fish(FishAlive, '/assets/fish-png-1-dead.png', '/assets/fish-png-1.png', 275, p5.windowHeight * 0.8, 3, p5);
-  let fishTwo = new Fish('/assets/fish-png-1.png', '/assets/fish-png-1-dead.png', '/assets/fish-png-1.png', 400, p5.windowHeight * 0.6, 4, p5);
-  let fishThree = new Fish('/assets/fish-png-1.png', '/assets/fish-png-1-dead.png', '/assets/fish-png-1.png', 180, p5.windowHeight * 0.55, 5, p5);
-  let fishFour = new Fish('/assets/fish-png-1.png', '/assets/fish-png-1-dead.png', '/assets/fish-png-1.png', 50, p5.windowHeight * 0.9, 5, p5);
-  let fishFive = new Shark('/assets/shark-png-1.webp', '/assets/shark-png-1-dead.png', '/assets/shark-png-1.webp', 100, p5.windowHeight * 0.7, 2, p5);
-  let bird = new Bird('/assets/seagull-png-1.png', '/assets/seagull-png-1-dead.png', '/assets/seagull-png-1.png', 800, p5.windowHeight * 0.3, 2, p5)
+  let fishOne = new Fish(FishAlive, '/assets/fish-png-1-dead.png', 275, p5.windowHeight * 0.8, 3, p5);
+  let fishTwo = new Fish(FishAlive, '/assets/fish-png-1-dead.png', 400, p5.windowHeight * 0.6, 4, p5);
+  let fishThree = new Fish(FishAlive, '/assets/fish-png-1-dead.png', 180, p5.windowHeight * 0.55, 5, p5);
+  let fishFour = new Fish(FishAlive, '/assets/fish-png-1-dead.png', 50, p5.windowHeight * 0.9, 5, p5);
+  let fishFive = new Shark('/assets/shark-png-1.webp', '/assets/shark-png-1-dead.png', 100, p5.windowHeight * 0.7, 2, p5);
+  let bird = new Bird('/assets/seagull-png-1.png', '/assets/seagull-png-1-dead.png', 800, p5.windowHeight * 0.3, 2, p5)
   // structure: image, deadimage, starter/current image, x pos, y pos, speed, p5
 
 

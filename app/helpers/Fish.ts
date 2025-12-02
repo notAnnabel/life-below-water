@@ -15,10 +15,10 @@ export default class Fish {
   upperLimit = 0;
 
 
-  constructor(aliveImg: any, deadImg: any, currentImg: any, xpos: number, ypos: number, fishSpeed: number, p5: any) {
+  constructor(aliveImg: any, deadImg: any, xpos: number, ypos: number, fishSpeed: number, p5: any) {
     this.aliveImg = aliveImg;
     this.deadImg = deadImg;
-    this.currentImg = currentImg;
+    this.currentImg = aliveImg;
     this.xpos = xpos;
     this.ypos = ypos;
     this.p5 = p5;
