@@ -1,7 +1,10 @@
+
+const backendURL = import.meta.env.VITE_BACKEND_URL || "http//localhost:3000"
+
 export async function getPollution(){
 
 
-  const url = "https://life-below-water-backend.vercel.app/pollution";
+  const url = `${backendURL}/pollution`;
   try {
     const response = await fetch(url);
     if (!response.ok) {
