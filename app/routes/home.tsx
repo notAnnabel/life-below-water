@@ -4,13 +4,6 @@ import P5Sketch from './../helpers/lifebelowwater';
 import { useEffect, useState } from 'react';
 
 
-
-
-
-
-
-
-
 function App() {
 
   const [pollution, setPollution] = useState(false);

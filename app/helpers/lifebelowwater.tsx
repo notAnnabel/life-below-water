@@ -5,6 +5,8 @@ import Wave from "./Wave";
 import Shark from "./Shark";
 import Bird from "./Bird";
 
+import FishAlive from '/assets/fish-png-1.png';
+
 interface p5props {
   polluted: boolean; // true is clean (positive) false is polluted
   greenWater: number,
@@ -17,7 +19,7 @@ function sketch(p5: any) {
   let greenWater = 200;
   let wave = new Wave(blueWater, greenWater, p5);
 
-  let fishOne = new Fish('/assets/fish-png-1.png', '/assets/fish-png-1-dead.png', '/assets/fish-png-1.png', 275, p5.windowHeight * 0.8, 3, p5);
+  let fishOne = new Fish(FishAlive, '/assets/fish-png-1-dead.png', '/assets/fish-png-1.png', 275, p5.windowHeight * 0.8, 3, p5);
   let fishTwo = new Fish('/assets/fish-png-1.png', '/assets/fish-png-1-dead.png', '/assets/fish-png-1.png', 400, p5.windowHeight * 0.6, 4, p5);
   let fishThree = new Fish('/assets/fish-png-1.png', '/assets/fish-png-1-dead.png', '/assets/fish-png-1.png', 180, p5.windowHeight * 0.55, 5, p5);
   let fishFour = new Fish('/assets/fish-png-1.png', '/assets/fish-png-1-dead.png', '/assets/fish-png-1.png', 50, p5.windowHeight * 0.9, 5, p5);
