@@ -27,8 +27,6 @@ function App() {
   }, [pollution]); // [pollution] means when the pollution changes the useEffect
 
   function pollute() {
-    console.log('hellooo');
-  
  
     async function fetchData() {
       const data = await postPollute();

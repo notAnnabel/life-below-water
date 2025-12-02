@@ -1,18 +1,12 @@
-# Welcome to React Router!
+# Welcome to Life below water!
 
-A modern, production-ready template for building full-stack React applications using React Router.
+This is a project based on 14 UN sustainability goal, life below water, using React Router.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
 
-## Features
+## Features of the experience
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- A simulated p5.js wave that can become 'polluted' with the buttons linked with the backend on the left hand side of the screen.
+- Animals that move at varied speeds across the screen
 
 ## Getting Started
 
@@ -55,14 +49,7 @@ docker build -t my-app .
 docker run -p 3000:3000 my-app
 ```
 
-The containerized application can be deployed to any platform that supports Docker, including:
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
 
 ### DIY Deployment
 

@@ -3,7 +3,7 @@ import { getPollution } from "./backend";
 import Fish from "./Fish";
 import Wave from "./Wave";
 import Shark from "./Shark";
-import Bird from "./bird";
+import Bird from "./Bird";
 
 interface p5props {
   polluted: boolean; // true is clean (positive) false is polluted
@@ -23,21 +23,13 @@ function sketch(p5: any) {
   let fishFour = new Fish('/assets/fish-png-1.png', '/assets/fish-png-1-dead.png', '/assets/fish-png-1.png', 50, p5.windowHeight * 0.9, 5, p5);
   let fishFive = new Shark('/assets/shark-png-1.webp', '/assets/shark-png-1-dead.png', '/assets/shark-png-1.webp', 100, p5.windowHeight * 0.7, 2, p5);
   let bird = new Bird('/assets/seagull-png-1.png', '/assets/seagull-png-1-dead.png', '/assets/seagull-png-1.png', 800, p5.windowHeight * 0.3, 2, p5)
-
-  let allfish = [fishOne, fishTwo, fishThree, fishFour, fishFive, bird];
-
-  //let fish = new Fish("/assets/fish-png-1.png", "/assets/fish-png-1-dead.png", 200, p5.windowHeight / 2, p5);
+  // structure: image, deadimage, starter/current image, x pos, y pos, speed, p5
 
 
+  let allanimals = [fishOne, fishTwo, fishThree, fishFour, fishFive, bird];
 
-
-
-  // let fishOne;
 
   let sun = p5.color(255, 204, 0);
-
-
-
 
   let xpos = 200; // fish x position
   let ypos = p5.windowHeight / 2; // fish y position
@@ -57,20 +49,16 @@ function sketch(p5: any) {
     // props for changing the fish to dead
     if (props.polluted != undefined) {
       if (props.polluted) {
-        allfish.forEach(
+        allanimals.forEach(
           function (fish) {
             fish.revive();
           }
         )
 
       } else {
-        //fishOne.kill();
-        //fishTwo.kill();
-        //fishThree.kill();
-        //fishFour.kill();
-        allfish.forEach(
+        allanimals.forEach(
           function (fish) {
-            fish.kill();
+            fish.kill(); // animals inherits from fish class
           }
         )
       }
@@ -81,11 +69,7 @@ function sketch(p5: any) {
 
 
   p5.preload = () => {
-    //fishOne.preload(); // call the preload function from fish class
-    //fishTwo.preload(); // call the preload function from fish class
-    //fishThree.preload(); // call the preload function from fish class
-    //fishFour.preload();
-    allfish.forEach(
+    allanimals.forEach(
       function (fish) {
         fish.preload();
       }
@@ -97,7 +81,7 @@ function sketch(p5: any) {
   p5.setup = () => {
     p5.createCanvas(p5.windowWidth, p5.windowHeight);
     wave.setup();
-    allfish.forEach(
+    allanimals.forEach(
       function (fish) {
         fish.setup();
       }
@@ -136,12 +120,7 @@ function sketch(p5: any) {
 
     wave.draw();
 
-
-    //fishOne.moving();
-    //fishTwo.moving();
-    //fishThree.moving();
-    //fishFour.moving();
-    allfish.forEach(
+    allanimals.forEach(
       function (fish) {
         fish.moving();
       }
@@ -153,21 +132,12 @@ function sketch(p5: any) {
   p5.windowResized = () => {
     p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
     wave.setup();
-    allfish.forEach(
+    allanimals.forEach(
       function (fish) {
         fish.setup();
       }
     )
   }
-
-
-
-
-  // g = p5.random(180,220);
-  // b = p5.random(200,220)
-  // p5.fill(100,g,b)
-
-  //}
 }
 
 
