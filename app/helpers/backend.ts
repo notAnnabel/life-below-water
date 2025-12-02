@@ -1,7 +1,7 @@
 export async function getPollution(){
 
 
-  const url = "https://life-below-water-six.vercel.app/pollution";
+  const url = "https://life-below-water-backend.vercel.app/pollution";
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -24,7 +24,7 @@ export async function getPollution(){
 export async function postPollute(){
 
 
-  const url = "https://life-below-water-six.vercel.app/pollute";
+  const url = "https://life-below-water-backend.vercel.app/pollute";
   try {
     const response = await fetch(url, {
       headers: {
@@ -59,7 +59,7 @@ export async function postPollute(){
 export async function postClean(){
 
 
-  const url = "https://life-below-water-six.vercel.app/clean";
+  const url = "https://life-below-water-backend.vercel.app/clean";
   try {
     const response = await fetch(url, {
       headers: {
