@@ -66,12 +66,4 @@ button:hover {
 }
 
 
-.card {
-  /*only shows when button is active*/
-  width: 0;
-  height: 0;
-}
 
-/*card.button{
-  /* */
-/*

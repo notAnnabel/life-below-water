@@ -2,18 +2,22 @@
 
 export default class Fish {
 
+  ////////////////////////////////////
+  /// constructor parameters
   aliveImg: any;
   deadImg: any;
-  currentImg: any;
   xpos: number;
   ypos: number;
-  p5: any;
   fishSpeed: any;
+  p5: any;
+
+  /// variables to be used, that aren't paramenters
+  currentImg: any;
   alive = true;
   imageSize = 100;
   lowerLimit = 0;
   upperLimit = 0;
-
+  ////////////////////////////////////
 
   constructor(aliveImg: any, deadImg: any, xpos: number, ypos: number, fishSpeed: number, p5: any) {
     this.aliveImg = aliveImg;
@@ -56,19 +60,4 @@ export default class Fish {
   };
 };
 
-
-//}; uncommented out for testing
-
-/*
-function hovering(){
-if (mouseOver(livingImg){
-use mask() and clip() functions over fish img
-}
-// trigger text box depending on the fish
-
-if (mouseOver(deadImg){
-trigger text box BOOOOO!!!!! YOU KILLED ME YOU JERK >:(
-}
-
-*/
 

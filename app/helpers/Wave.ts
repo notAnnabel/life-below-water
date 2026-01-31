@@ -2,12 +2,14 @@
 
 
 export default class Wave {
+  // wave colour
   greenWater: any;
   blueWater: any;
   red: any;
 
   p5: any
-
+  
+  // variables for wave calculations
   xspacing: number;
   w: number = 0;
   theta: number;
@@ -29,10 +31,7 @@ export default class Wave {
     this.theta = 0.0; // Start angle at 0
     this.amplitude = 30.0; // Height of wave
     this.period = 500.0; // How many pixels before the wave repeats
-    // this.dx; // Value for incrementing x
     let yvalues: Array<number>; // Using an array to store height values for the wave
-
-    //this.currentHeight = p5.height/2;
 
     this.p5 = p5;
 

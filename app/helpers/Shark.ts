@@ -1,5 +1,5 @@
 import Fish from "./Fish";
 
 export default class Shark extends Fish {
-    imageSize = 400;
+    imageSize = 400; // increases size of shark
 }

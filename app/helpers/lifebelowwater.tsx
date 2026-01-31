@@ -35,7 +35,7 @@ function sketch(p5: any) {
 
   let xpos = 200; // fish x position
   let ypos = p5.windowHeight / 2; // fish y position
-  //let bgRed: number = 220
+ 
 
   p5.updateWithProps = (props: p5props) => {
 
@@ -91,7 +91,7 @@ function sketch(p5: any) {
 
   };
 
-  function drawBlurryTitles() {
+  function drawBlurryTitles() { // title with blurry effect
     p5.textSize(100);
     p5.fill(205, 255, 255, 120);
     p5.text('Life below water', p5.windowWidth / 3, p5.windowHeight / 10 + 20);
@@ -174,7 +174,6 @@ export default function Sketch(props: sketchProps): JSX.Element {
   }, []); // [] is dependency for rendering
 
   if (!P5Wrapper) return <div>Loading sketch...</div>;
-  // const 
 
   return <P5Wrapper
     sketch={sketch}
