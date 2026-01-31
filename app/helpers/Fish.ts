@@ -1,5 +1,3 @@
-// the fish live here mwahahah
-
 export default class Fish {
 
   ////////////////////////////////////
