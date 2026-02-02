@@ -8,7 +8,7 @@ export default class Wave {
   
   // variables for wave calculations
   xspacing: number;
-  w: number = 0;
+  wavelength: number = 0; // horizontal length of the wave
   theta: number;
   amplitude: number;
   dx: number = 0;
@@ -36,9 +36,9 @@ export default class Wave {
   }
 
   setup() {
-    this.w = this.p5.windowWidth + 16;
+    this.wavelength = this.p5.windowWidth + 16;
     this.dx = (this.p5.TWO_PI / this.period) * this.xspacing;
-    this.yvalues = new Array(this.p5.floor(this.w / this.xspacing));
+    this.yvalues = new Array(this.p5.floor(this.wavelength / this.xspacing));
   };
 
   renderWave() {
