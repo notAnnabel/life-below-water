@@ -1,6 +1,6 @@
 import { useState, useEffect, type JSX } from "react";
 import { getPollution } from "./backend";
-import Fish from "./Fish";
+import Animal from "./Fish";
 import Wave from "./Wave";
 import Shark from "./Shark";
 import Bird from "./Bird";
@@ -19,16 +19,16 @@ function sketch(p5: any) {
   let greenWater = 200;
   let wave = new Wave(blueWater, greenWater, p5);
 
-  let fishOne = new Fish(`${backendURL}/fish-png-1.png`, `${backendURL}/fish-png-1-dead.png`, 275, p5.windowHeight * 0.8, 3, p5);
-  let fishTwo = new Fish(`${backendURL}/fish-png-1.png`, `${backendURL}/fish-png-1-dead.png`, 400, p5.windowHeight * 0.6, 4, p5);
-  let fishThree = new Fish(`${backendURL}/fish-png-1.png`, `${backendURL}/fish-png-1-dead.png`, 180, p5.windowHeight * 0.55, 5, p5);
-  let fishFour = new Fish(`${backendURL}/fish-png-1.png`, `${backendURL}/fish-png-1-dead.png`, 50, p5.windowHeight * 0.9, 5, p5);
-  let fishFive = new Shark(`${backendURL}/shark-png-1.webp`, `${backendURL}/shark-png-1-dead.png`, 100, p5.windowHeight * 0.7, 2, p5);
+  let fishOne = new Animal(`${backendURL}/fish-png-1.png`, `${backendURL}/fish-png-1-dead.png`, 275, p5.windowHeight * 0.8, 3, p5);
+  let fishTwo = new Animal(`${backendURL}/fish-png-1.png`, `${backendURL}/fish-png-1-dead.png`, 400, p5.windowHeight * 0.6, 4, p5);
+  let fishThree = new Animal(`${backendURL}/fish-png-1.png`, `${backendURL}/fish-png-1-dead.png`, 180, p5.windowHeight * 0.55, 5, p5);
+  let fishFour = new Animal(`${backendURL}/fish-png-1.png`, `${backendURL}/fish-png-1-dead.png`, 50, p5.windowHeight * 0.9, 5, p5);
+  let shark = new Shark(`${backendURL}/shark-png-1.webp`, `${backendURL}/shark-png-1-dead.png`, 100, p5.windowHeight * 0.7, 2, p5);
   let bird = new Bird(`${backendURL}/seagull-png-1.png`, `${backendURL}/seagull-png-1-dead.png`, 800, p5.windowHeight * 0.3, 2, p5)
   // structure: image, deadimage, starter/current image, x pos, y pos, speed, p5
 
 
-  let allanimals = [fishOne, fishTwo, fishThree, fishFour, fishFive, bird];
+  let allanimals = [fishOne, fishTwo, fishThree, fishFour, shark, bird];
 
 
   let sun = p5.color(255, 204, 0);
