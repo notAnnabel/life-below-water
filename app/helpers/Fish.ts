@@ -1,4 +1,4 @@
-export default class Fish {
+export default class Animal { // the default animal is a Fish
 
   ////////////////////////////////////
   /// constructor parameters
@@ -36,16 +36,18 @@ export default class Fish {
   setup(){
     this.lowerLimit = this.p5.height * 0.5;
     this.upperLimit = this.p5.height * 0.8
-  }
+  } // stes up the limit in y axis for fish movement
 
   moving() {
     if (this.xpos < this.p5.windowWidth) {
       this.xpos = this.xpos + this.fishSpeed;
-    }
+    } // animal moves to the right until it reaches the end of the screen
     else {
       this.xpos = -60;
       this.ypos = this.p5.random(this.lowerLimit, this.upperLimit);
-    }
+    } // the animal is placed offscreen to give it a bit of a delay before it appears again
+    // and its y position is randomized within limits
+
     this.p5.image(this.currentImg, this.xpos, this.ypos, this.imageSize, this.imageSize);
   };
   kill() {

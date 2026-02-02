@@ -1,6 +1,3 @@
-// omg wave me goodbye my lovely waves :3
-
-
 export default class Wave {
   // wave colour
   greenWater: any;
