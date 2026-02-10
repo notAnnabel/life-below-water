@@ -1,6 +1,6 @@
 import { useState, useEffect, type JSX } from "react";
 import { getPollution } from "./backend";
-import Animal from "./Fish";
+import Animal from "./Animal";
 import Wave from "./Wave";
 import Shark from "./Shark";
 import Bird from "./Bird";

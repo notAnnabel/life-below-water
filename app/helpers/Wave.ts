@@ -57,7 +57,7 @@ export default class Wave {
   };
 
   calcWave() {
-    this.theta += 0.02 // is this so that value doesnt reset when reloaded
+    this.theta += 0.02 
     let x = this.theta;
     for (let i = 0; i < this.yvalues.length; i++) {
       this.yvalues[i] = this.p5.sin(x) * this.amplitude;
