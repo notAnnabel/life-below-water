@@ -59,13 +59,13 @@ Make sure to deploy the output of `npm run build`
 ## Class properties
 there are two main classes, wave, and Animal (from which Fish and Shark inherit)
 
-# wave
+### wave
 -	setup() creates the calculation of the distance of the circles that make up the wave. It does this for the entire window width. It also creates an array of y axis values to be iterated over in the renderWave() and calcWave() methods. 
 -	renderWave() colours the wave (with the non-polluted colour to begin with). It also calculates the circle positions of the wave. Each wave is calculated from halfway up the window height to 50 units beneath the window height, this is done to ensure there are no gaps left at the bottom of the window as the waves peak and dip. 
 -	calcWave() calculates the sine motion of the wave. This is done as explained above. 
 -	Draw() simply calls the calcWave() and render() methods. 
 
-# animal 
+### animal 
 -	moving() increments the x axis position of the animal by the fishSpeed. When the image is off the screen, it is then repositioned at -60 on the x axis. This is to give the fish some time to loop back around in a more natural way. The fish’s y coordinate is randomised within a set way once it reappears on screen. 
 -	kill() changes the currently drawn image to the assigned dead image in the fish instance. 
 -	revive() changes the currently drawn image to the assigned alive image in the fish instance 
